@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chikei 千惠 | 日本好物進口・代購</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D0362A;
+    --red-light: #E84D3F;
+    --red-dark: #A02820;
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --ink-muted: #5A4A3A;
+    --pink: #E8538C;
+    --purple: #7B4FBF;
+    --blue: #3B7ED4;
+    --gold: #C8923A;
+    --wave-color: rgba(0,0,0,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(208,54,42,0.15);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .nav-logo .logo-circle {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #3B7ED4, #7B4FBF, #E8538C);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px; color: white; font-weight: 700;
+  }
+
+  .nav-logo .brand-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px; color: var(--red); font-weight: 700;
+  }
+
+  .nav-logo .brand-sub {
+    font-size: 10px; color: var(--ink-muted); letter-spacing: 2px;
+  }
+
+  nav ul {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  nav ul a {
+    text-decoration: none; color: var(--ink-muted);
+    font-size: 14px; font-weight: 500; letter-spacing: 1px;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  nav ul a::after {
+    content: ''; position: absolute; left: 0; bottom: -3px;
+    width: 0; height: 2px; background: var(--red);
+    transition: width 0.25s;
+  }
+
+  nav ul a:hover { color: var(--red); }
+  nav ul a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--red); color: white !important;
+    padding: 8px 20px; border-radius: 24px;
+    font-size: 13px !important; font-weight: 700 !important;
+    letter-spacing: 1px;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--red-light) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: #1A1410;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 50%, rgba(208,54,42,0.25) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(123,79,191,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(232,83,140,0.15) 0%, transparent 45%);
+  }
+
+  /* Japanese wave SVG pattern overlay */
+  .hero-waves {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0,40 Q10,20 20,40 Q30,60 40,40 Q50,20 60,40 Q70,60 80,40' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M0,20 Q10,0 20,20 Q30,40 40,20 Q50,0 60,20 Q70,40 80,20' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M0,60 Q10,40 20,60 Q30,80 40,60 Q50,40 60,60 Q70,80 80,60' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
+  }
+
+  .hero-sun {
+    position: absolute; right: -80px; top: 50%;
+    transform: translateY(-50%);
+    width: 680px; height: 680px; border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(208,54,42,0.35) 0%, rgba(208,54,42,0.08) 55%, transparent 72%);
+    border: 1px solid rgba(208,54,42,0.2);
+  }
+
+  .hero-sun::before {
+    content: ''; position: absolute; inset: 40px; border-radius: 50%;
+    border: 1px solid rgba(208,54,42,0.15);
+  }
+
+  .hero-sun::after {
+    content: ''; position: absolute; inset: 80px; border-radius: 50%;
+    border: 1px solid rgba(208,54,42,0.1);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 5%; max-width: 700px;
+    margin-top: 64px;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(208,54,42,0.2); border: 1px solid rgba(208,54,42,0.4);
+    color: #FF8577; font-size: 12px; letter-spacing: 3px;
+    padding: 6px 16px; border-radius: 24px; margin-bottom: 24px;
+    animation: fadeUp 1s 0.1s ease both;
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #FF8577;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+  .hero-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 5vw, 56px);
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4; margin-bottom: 8px;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--red-light);
+    line-height: 1; margin-bottom: 20px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-tagline {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    line-height: 1.8; margin-bottom: 40px; max-width: 480px;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .btn-primary {
+    background: var(--red); color: white;
+    padding: 14px 36px; border-radius: 4px;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-decoration: none; transition: all 0.25s;
+    border: 2px solid var(--red);
+  }
+
+  .btn-primary:hover {
+    background: var(--red-light); border-color: var(--red-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.8);
+    padding: 14px 36px; border-radius: 4px;
+    font-size: 14px; font-weight: 500; letter-spacing: 2px;
+    text-decoration: none; transition: all 0.25s;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.7); color: white;
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute; bottom: 60px; left: 5%;
+    display: flex; gap: 48px;
+    animation: fadeUp 1s 0.6s ease both;
+    z-index: 2;
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-size: 32px; font-weight: 700; color: white;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .stat-num span { font-size: 16px; color: var(--red-light); }
+
+  .stat-label {
+    font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 2px; margin-top: 2px;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 96px 5%; }
+
+  .section-header { text-align: center; margin-bottom: 64px; }
+
+  .section-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px; color: var(--red); letter-spacing: 4px; margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700; line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .section-divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; margin: 16px auto 20px;
+  }
+
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; max-width: 80px;
+    height: 1px; background: linear-gradient(to right, transparent, var(--red));
+  }
+
+  .section-divider::after { transform: scaleX(-1); }
+
+  .section-divider .kamon {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--red);
+  }
+
+  .section-sub {
+    font-size: 15px; color: var(--ink-muted); line-height: 1.8; max-width: 540px; margin: 0 auto;
+  }
+
+  /* CATEGORIES */
+  .categories { background: white; }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px; max-width: 1100px; margin: 0 auto;
+  }
+
+  .cat-card {
+    background: var(--cream); border-radius: 12px;
+    padding: 32px 20px; text-align: center;
+    cursor: pointer; transition: all 0.3s;
+    border: 1px solid transparent; position: relative; overflow: hidden;
+  }
+
+  .cat-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+
+  .cat-card:hover {
+    border-color: rgba(208,54,42,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .cat-card:hover::before { transform: scaleX(1); }
+
+  .cat-emoji { font-size: 36px; margin-bottom: 12px; display: block; }
+
+  .cat-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px; font-weight: 700; color: var(--ink); display: block;
+  }
+
+  .cat-name-tw {
+    font-size: 12px; color: var(--ink-muted); letter-spacing: 2px;
+    margin-top: 4px; display: block;
+  }
+
+  .cat-count {
+    font-size: 11px; color: var(--red); margin-top: 8px;
+    background: rgba(208,54,42,0.08); padding: 3px 10px; border-radius: 12px;
+    display: inline-block;
+  }
+
+  /* FEATURED PRODUCTS */
+  .products { background: var(--cream); }
+
+  .product-filter {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .filter-btn {
+    padding: 8px 20px; border-radius: 24px; border: 1px solid rgba(208,54,42,0.25);
+    background: transparent; color: var(--ink-muted); font-size: 13px;
+    cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--red); color: white; border-color: var(--red);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px; max-width: 1100px; margin: 0 auto;
+  }
+
+  .product-card {
+    background: white; border-radius: 12px;
+    overflow: hidden; transition: all 0.3s;
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+
+  .product-img {
+    height: 200px; background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; position: relative; overflow: hidden;
+  }
+
+  .product-img::after {
+    content: '日本直送'; position: absolute; top: 12px; right: -24px;
+    background: var(--red); color: white; font-size: 10px;
+    padding: 3px 32px; transform: rotate(45deg);
+    letter-spacing: 1px;
+  }
+
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    color: white; font-size: 10px; padding: 3px 10px; border-radius: 12px;
+    font-weight: 700; letter-spacing: 1px;
+  }
+
+  .product-info { padding: 16px; }
+
+  .product-brand {
+    font-size: 11px; color: var(--red); letter-spacing: 2px; margin-bottom: 4px;
+  }
+
+  .product-name {
+    font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .product-price {
+    display: flex; align-items: baseline; gap: 8px;
+  }
+
+  .price-main {
+    font-size: 22px; font-weight: 700; color: var(--red);
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .price-currency { font-size: 14px; }
+
+  .price-original {
+    font-size: 13px; color: var(--ink-muted); text-decoration: line-through;
+  }
+
+  .product-action {
+    margin-top: 12px; display: flex; gap: 8px;
+  }
+
+  .btn-cart {
+    flex: 1; padding: 10px; border-radius: 6px;
+    background: var(--red); color: white; border: none;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; font-family: inherit; letter-spacing: 1px;
+  }
+
+  .btn-cart:hover { background: var(--red-light); transform: scale(1.02); }
+
+  .btn-wishlist {
+    padding: 10px 14px; border-radius: 6px;
+    background: transparent; color: var(--ink-muted);
+    border: 1px solid rgba(0,0,0,0.12); cursor: pointer;
+    font-size: 16px; transition: all 0.2s;
+  }
+
+  .btn-wishlist:hover { color: var(--pink); border-color: var(--pink); }
+
+  /* WHY US */
+  .why-us {
+    background: #1A1410; color: white;
+    position: relative; overflow: hidden;
+  }
+
+  .why-us-waves {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0,40 Q10,20 20,40 Q30,60 40,40 Q50,20 60,40 Q70,60 80,40' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M0,20 Q10,0 20,20 Q30,40 40,20 Q50,0 60,20 Q70,40 80,20' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M0,60 Q10,40 20,60 Q30,80 40,60 Q50,40 60,60 Q70,80 80,60' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
+  }
+
+  .why-us .section-title { color: white; }
+  .why-us .section-sub { color: rgba(255,255,255,0.5); }
+  .why-us .section-jp { color: rgba(208,54,42,0.9); }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px; max-width: 1100px; margin: 0 auto;
+  }
+
+  .feature-card {
+    padding: 32px; border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(208,54,42,0.4);
+    transform: translateY(-4px);
+  }
+
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 20px;
+  }
+
+  .feature-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px; font-weight: 700; color: white; margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.8;
+  }
+
+  /* STEPS */
+  .how-it-works { background: white; }
+
+  .steps {
+    display: flex; gap: 0;
+    max-width: 900px; margin: 0 auto;
+    position: relative;
+  }
+
+  .steps::before {
+    content: ''; position: absolute; top: 32px; left: 10%; right: 10%;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--red) 20%, var(--red) 80%, transparent);
+    z-index: 0;
+  }
+
+  .step {
+    flex: 1; text-align: center; padding: 0 16px;
+    position: relative; z-index: 1;
+  }
+
+  .step-num {
+    width: 64px; height: 64px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 700;
+    margin: 0 auto 20px;
+    border: 2px solid var(--red);
+    position: relative; background: white;
+  }
+
+  .step:nth-child(1) .step-num { background: var(--red); color: white; }
+  .step:nth-child(2) .step-num { background: white; color: var(--red); }
+  .step:nth-child(3) .step-num { background: white; color: var(--red); }
+  .step:nth-child(4) .step-num { background: white; color: var(--red); }
+
+  .step-emoji { font-size: 28px; margin-bottom: 12px; display: block; }
+
+  .step-title {
+    font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 13px; color: var(--ink-muted); line-height: 1.7;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; max-width: 1100px; margin: 0 auto;
+  }
+
+  .review-card {
+    background: white; border-radius: 12px;
+    padding: 28px; border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.3s; position: relative;
+  }
+
+  .review-card::before {
+    content: '❝'; position: absolute; top: 20px; right: 24px;
+    font-size: 48px; color: rgba(208,54,42,0.1); line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+  }
+
+  .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+
+  .review-text {
+    font-size: 14px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 20px;
+  }
+
+  .review-author {
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px;
+  }
+
+  .review-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+
+  .review-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+  .review-loc { font-size: 12px; color: var(--ink-muted); }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--red);
+    padding: 80px 5%; text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0,40 Q10,20 20,40 Q30,60 40,40 Q50,20 60,40 Q70,60 80,40' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+  }
+
+  .cta-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 4vw, 36px); color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+  }
+
+  .cta-title {
+    font-size: clamp(22px, 4vw, 40px); font-weight: 700;
+    color: white; margin-bottom: 16px;
+  }
+
+  .cta-sub {
+    font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 36px;
+  }
+
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-white {
+    background: white; color: var(--red);
+    padding: 14px 40px; border-radius: 4px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: all 0.2s; letter-spacing: 1px;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+  .btn-line {
+    background: #06C755; color: white;
+    padding: 14px 40px; border-radius: 4px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: all 0.2s; letter-spacing: 1px;
+  }
+
+  .btn-line:hover { background: #05B84C; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #120E0A; color: rgba(255,255,255,0.5);
+    padding: 60px 5% 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+
+  .footer-brand .logo-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px; color: white; margin-bottom: 4px;
+    display: block;
+  }
+
+  .footer-brand .logo-jp {
+    font-size: 12px; letter-spacing: 3px; color: var(--red); margin-bottom: 16px; display: block;
+  }
+
+  .footer-brand p { font-size: 13px; line-height: 1.8; max-width: 300px; }
+
+  .footer-brand .socials {
+    display: flex; gap: 12px; margin-top: 20px;
+  }
+
+  .social-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 16px; transition: all 0.2s;
+  }
+
+  .social-icon:hover { background: var(--red); border-color: var(--red); }
+
+  .footer-col h4 {
+    color: white; font-size: 14px; font-weight: 700;
+    letter-spacing: 2px; margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a {
+    color: rgba(255,255,255,0.45); font-size: 13px;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: white; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px; display: flex;
+    justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  .footer-bottom p { font-size: 12px; }
+
+  .footer-payments { display: flex; gap: 8px; }
+  .pay-badge {
+    padding: 4px 12px; border-radius: 4px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px; color: rgba(255,255,255,0.4);
+  }
+
+  /* SCROLL TOP */
+  .scroll-top {
+    position: fixed; bottom: 32px; right: 32px; z-index: 99;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--red); color: white;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 18px; font-weight: 700;
+    box-shadow: 0 4px 16px rgba(208,54,42,0.4);
+    transition: all 0.25s; opacity: 0;
+  }
+
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(208,54,42,0.5); }
+
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .hero-stats { gap: 24px; }
+    .steps { flex-direction: column; align-items: center; }
+    .steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-circle">C</div>
+    <div>
+      <div class="brand-text">Chikei</div>
+      <div class="brand-sub">日本好物進口 | 代購</div>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#categories">商品分類</a></li>
+    <li><a href="#products">精選商品</a></li>
+    <li><a href="#why">為什麼選我們</a></li>
+    <li><a href="#how">代購流程</a></li>
+    <li><a href="#contact" class="nav-cta">立即詢問</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-waves"></div>
+  <div class="hero-sun"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>日本直送・品質保證</div>
+    <div class="hero-jp">日本製の高品質な商品</div>
+    <div class="hero-en">Chikei</div>
+    <p class="hero-tagline">
+      我們直接從日本採購最道地的商品，嚴格把關品質，<br>
+      讓您輕鬆入手限定好物，享受純正日本品味。
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">立即選購</a>
+      <a href="#how" class="btn-outline">代購流程 →</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label">商品種類</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1200<span>+</span></div>
+      <div class="stat-label">滿意顧客</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9<span>★</span></div>
+      <div class="stat-label">顧客評分</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-header">
+    <div class="section-jp">カテゴリー</div>
+    <h2 class="section-title">熱門商品分類</h2>
+    <div class="section-divider"><div class="kamon"></div></div>
+    <p class="section-sub">從美妝保養到生活雜貨，精選日本各大類好物，一站式購齊</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <span class="cat-emoji">🧴</span>
+      <span class="cat-name-jp">美容・スキンケア</span>
+      <span class="cat-name-tw">美妝保養</span>
+      <span class="cat-count">128 件</span>
+    </div>
+    <div class="cat-card">
+      <span class="cat-emoji">🍡</span>
+      <span class="cat-name-jp">食品・お菓子</span>
+      <span class="cat-name-tw">食品零食</span>
+      <span class="cat-count">95 件</span>
+    </div>
+    <div class="cat-card">
+      <span class="cat-emoji">🏠</span>
+      <span class="cat-name-jp">生活雑貨</span>
+      <span class="cat-name-tw">生活雜貨</span>
+      <span class="cat-count">74 件</span>
+    </div>
+    <div class="cat-card">
+      <span class="cat-emoji">👗</span>
+      <span class="cat-name-jp">ファッション</span>
+      <span class="cat-name-tw">流行服飾</span>
+      <span class="cat-count">63 件</span>
+    </div>
+    <div class="cat-card">
+      <span class="cat-emoji">🐾</span>
+      <span class="cat-name-jp">ペット用品</span>
+      <span class="cat-name-tw">寵物用品</span>
+      <span class="cat-count">41 件</span>
+    </div>
+    <div class="cat-card">
+      <span class="cat-emoji">📦</span>
+      <span class="cat-name-jp">限定・レア</span>
+      <span class="cat-name-tw">限定商品</span>
+      <span class="cat-count">22 件</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-header">
+    <div class="section-jp">おすすめ商品</div>
+    <h2 class="section-title">精選熱賣商品</h2>
+    <div class="section-divider"><div class="kamon"></div></div>
+  </div>
+  <div class="product-filter">
+    <button class="filter-btn active">全部</button>
+    <button class="filter-btn">美妝保養</button>
+    <button class="filter-btn">食品零食</button>
+    <button class="filter-btn">生活雜貨</button>
+    <button class="filter-btn">限定商品</button>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-img" style="background: #FEF5F0;">🫧
+        <div class="product-badge">熱賣 No.1</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">SK-II</div>
+        <div class="product-name">青春露 Facial Treatment Essence 230ml</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>3,280</span>
+          <span class="price-original">$3,980</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img" style="background: #F5F0FE;">🍡
+        <div class="product-badge">限定版</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">東京バナナ</div>
+        <div class="product-name">東京香蕉限定夾心餅 8入禮盒</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>580</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img" style="background: #F0F5FE;">🫙</div>
+      <div class="product-info">
+        <div class="product-brand">SHISEIDO</div>
+        <div class="product-name">資生堂 TSUBAKI 黃金瞬護修護髮膜 180g</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>890</span>
+          <span class="price-original">$1,200</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img" style="background: #F0FEF5;">🍵
+        <div class="product-badge">新到貨</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">一保堂</div>
+        <div class="product-name">京都一保堂 宇治抹茶禮盒裝 40g</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>1,280</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img" style="background: #FFF5E8;">🧘</div>
+      <div class="product-info">
+        <div class="product-brand">MUJI 無印良品</div>
+        <div class="product-name">無印良品 香氛精油擴香瓶 45ml</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>680</span>
+          <span class="price-original">$850</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img" style="background: #FEF0F5;">💄
+        <div class="product-badge">季節限定</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">CANMAKE</div>
+        <div class="product-name">井田 CANMAKE 奶油腮紅 2025新色</div>
+        <div class="product-price">
+          <span class="price-main"><span class="price-currency">$</span>420</span>
+        </div>
+        <div class="product-action">
+          <button class="btn-cart">加入購物車</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="why-us-waves"></div>
+  <div class="section-header">
+    <div class="section-jp">なぜ千惠を選ぶ？</div>
+    <h2 class="section-title">為什麼選擇 Chikei</h2>
+    <div class="section-divider"><div class="kamon"></div></div>
+    <p class="section-sub" style="color:rgba(255,255,255,0.5)">我們對每一件商品都嚴格把關，提供您最放心的購物體驗</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(208,54,42,0.15);">🇯🇵</div>
+      <div class="feature-title">日本正品保證</div>
+      <p class="feature-desc">所有商品直接從日本正規通路採購，每件附上購買憑證，絕無仿冒品。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(59,126,212,0.15);">🚀</div>
+      <div class="feature-title">快速安全到貨</div>
+      <p class="feature-desc">海外直送 7-14 個工作天，全程物流追蹤，商品完整包裝到您手中。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(200,146,58,0.15);">💎</div>
+      <div class="feature-title">限定商品代購</div>
+      <p class="feature-desc">台灣買不到的限定商品、季節限定款，我們幫您搶購，不再錯過任何好物。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(6,199,85,0.15);">💬</div>
+      <div class="feature-title">LINE 即時服務</div>
+      <p class="feature-desc">LINE 官方帳號快速回覆，從下單到到貨全程追蹤，有問題隨時解決。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <div class="section-header">
+    <div class="section-jp">ご注文の流れ</div>
+    <h2 class="section-title">代購流程</h2>
+    <div class="section-divider"><div class="kamon"></div></div>
+    <p class="section-sub">四步驟輕鬆完成，坐在家裡享受日本直送好物</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <span class="step-emoji">🔍</span>
+      <div class="step-title">選擇商品</div>
+      <p class="step-desc">瀏覽商品清單<br>或指定商品連結</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <span class="step-emoji">💬</span>
+      <div class="step-title">LINE 詢問報價</div>
+      <p class="step-desc">傳送商品連結<br>我們立即報價</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <span class="step-emoji">💳</span>
+      <div class="step-title">付款確認</div>
+      <p class="step-desc">轉帳完成<br>即刻下單採購</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <span class="step-emoji">📦</span>
+      <div class="step-title">安心收貨</div>
+      <p class="step-desc">日本直送到府<br>全程追蹤物流</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-header">
+    <div class="section-jp">お客様の声</div>
+    <h2 class="section-title">顧客評價</h2>
+    <div class="section-divider"><div class="kamon"></div></div>
+  </div>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">第一次在 Chikei 購買 SK-II 青春露，真的很安心！有附購買憑證，價格也比台灣專櫃便宜很多，而且速度超快，推薦！</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#FEF0F5;">🙋‍♀️</div>
+        <div>
+          <div class="review-name">Vivian C.</div>
+          <div class="review-loc">台北 · 美妝控</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">幫我代購了東京限定版東京香蕉，台灣完全買不到，老闆服務超好，連結剛傳過去馬上報價，整個流程很順暢！</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#F5F0FE;">🧑‍💻</div>
+        <div>
+          <div class="review-name">James W.</div>
+          <div class="review-loc">新竹 · 日本迷</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">已經是第三次回購了，每次商品都包裝得很好，完全沒有損壞。這次買的無印良品香氛擴香超好聞，下次還要再買！</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#F0FEF5;">👩‍🎨</div>
+        <div>
+          <div class="review-name">Mei L.</div>
+          <div class="review-loc">台中 · 生活美學家</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner" id="contact">
+  <div class="cta-jp">今すぐご注文を</div>
+  <h2 class="cta-title">準備好開始代購了嗎？</h2>
+  <p class="cta-sub">加入 LINE 官方帳號，立即詢價，享受日本直送服務</p>
+  <div class="cta-actions">
+    <a href="#" class="btn-white">瀏覽所有商品</a>
+    <a href="#" class="btn-line">📱 加入 LINE 詢問</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-text">Chikei</span>
+      <span class="logo-jp">千惠 · 日本好物進口代購</span>
+      <p>我們專注於從日本採購最正宗、最高品質的商品，提供台灣消費者最安心的日本代購體驗。</p>
+      <div class="socials">
+        <a class="social-icon" href="#" title="Instagram">📸</a>
+        <a class="social-icon" href="#" title="Facebook">📘</a>
+        <a class="social-icon" href="#" title="LINE">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>商品分類</h4>
+      <ul>
+        <li><a href="#">美妝保養</a></li>
+        <li><a href="#">食品零食</a></li>
+        <li><a href="#">生活雜貨</a></li>
+        <li><a href="#">流行服飾</a></li>
+        <li><a href="#">限定商品</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>服務資訊</h4>
+      <ul>
+        <li><a href="#">代購流程</a></li>
+        <li><a href="#">運費說明</a></li>
+        <li><a href="#">常見問題</a></li>
+        <li><a href="#">退換貨政策</a></li>
+        <li><a href="#">聯絡我們</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Chikei 千惠 日本好物進口代購 · All Rights Reserved</p>
+    <div class="footer-payments">
+      <span class="pay-badge">LINE Pay</span>
+      <span class="pay-badge">匯款</span>
+      <span class="pay-badge">信用卡</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#home" class="scroll-top" id="scrollTop">↑</a>
+
+<script>
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.cat-card, .product-card, .feature-card, .review-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
